@@ -38,12 +38,13 @@ int main(int argc, char const *argv[])
 
 
   		int color = k*pr/p;
+  		MPI_Request R[k];
   		#pragma parallel for
   		for (int i = 0; i < k; ++i)
   		{
   			//MPI_Request 
   			int precv=m*((color-i)%k)+(pr%m);
-  			MPI_Irecv()
+  			MPI_Irecv(B, N, MPI_INT, , , comm, &R[i])
   		}
 
   		for (int i = 0; i < k; ++i)
